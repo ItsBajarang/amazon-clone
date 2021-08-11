@@ -9,10 +9,16 @@ export const getBasketTotal = (basket) => {
 };
 
 export default (state = initialState, { type, payload }) => {
-  console.log("printing type and payload",{ type, payload });
+  console.log("printing type and payload", { type, payload });
   switch (type) {
     case "ADD_TO_BASKET":
       return { ...state, basket: [...state.basket, payload] };
+
+    case "EMPTY_BASKET":
+      return {
+        ...state,
+        basket: [],
+      };
 
     case "REMOVE_FROM_BASKET":
       const index = state.basket.findIndex((item) => item.id === payload);
